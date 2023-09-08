@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the number</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="title">Guess the number!</h1>
+      <div class="guess-container">
+        <div class="user-guesses">
+          <h3>User guesses</h3>
+          <input id="user-input" type="number" placeholder=" guess number" />
+
+          <button id="user-btn">Guess!</button>
+          <p class="num-guesses">
+            Number of attempts: <span id="user-attempts"></span>
+          </p>
+          <p id="tip"></p>
+        </div>
+        <div class="computer-guesses">
+          <h3>Computer guesses</h3>
+          <input
+            id="computer-input"
+            type="number"
+            placeholder=" secret number"
+          />
+          <button id="computer-btn">Guess!</button>
+          <p class="num-guesses">
+            Number of attempts: <span id="computer-attempts"></span>
+          </p>
+          <p id="computer-guess-text"></p>
+        </div>
+      </div>
+      <h1 id="result"></h1>
+    </div>
+
+    <div class="button-wrapper">
+      <button class="confetti-button">Yay🎉</button>
+    </div>
+  </body>
+</html>

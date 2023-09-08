@@ -87,6 +87,19 @@ function getRange(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+// handle for user pressing "Enter" key
+document.querySelectorAll("input").forEach((input) => {
+  input.addEventListener("keypress", function (event) {
+    if (event.key === "Enter" && event.target.id === "user-input") {
+      userButton.click();
+    }
+
+    if (event.key === "Enter" && event.target.id === "computer-input") {
+      computerButton.click();
+    }
+  });
+});
+
 // Concludes who/if there is already a winner
 function getWinner() {
   if (userDoneGuessing && computerDoneGuessing) {

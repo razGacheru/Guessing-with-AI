@@ -5,6 +5,8 @@ let tip = document.getElementById("tip");
 let result = document.getElementById("result");
 let userSecretNumber = Math.floor(Math.random() * 100);
 let numOfAttempts = 0;
+let userDoneGuessing = false;
+let computerDoneGuessing = false;
 
 // User guesses function
 userButton.addEventListener("click", () => {
@@ -19,6 +21,7 @@ userButton.addEventListener("click", () => {
     userInput.style.border = "1px solid green";
     tip.style.color = "green";
     tip.innerText = "You guessed it!";
+    userDoneGuessing = true;
 
     getWinner();
     return;
@@ -65,9 +68,10 @@ computerButton.addEventListener("click", () => {
     } else {
       // The computer has guessed the correct number
       computerAttempts.innerText = compNumOfAttempts;
-      getWinner();
       computerInput.setAttribute("disabled", true);
       computerButton.setAttribute("disabled", true);
+      computerDoneGuessing = true;
+      getWinner();
       return; // Exit the function
     }
     computerAttempts.innerText = compNumOfAttempts;
@@ -85,10 +89,10 @@ function getRange(min, max) {
 
 // Concludes who/if there is already a winner
 function getWinner() {
-  if (numOfAttempts > 0 && compNumOfAttempts > 0) {
+  if (userDoneGuessing && computerDoneGuessing) {
     if (numOfAttempts < compNumOfAttempts) {
-      result.innerText = "You won!";
-      tip.innerText = "You won";
+      result.innerText = "You won!🎉";
+      tip.innerText = "You won🎉";
       confetti();
     } else {
       tip.innerText = "You lost";
@@ -97,6 +101,8 @@ function getWinner() {
     }
     compNumOfAttempts = 0;
     numOfAttempts = 0;
+    userDoneGuessing = false;
+    computerDoneGuessing = false;
     setTimeout(() => {
       let reload = prompt("Play again? Enter Y or N ");
       if (reload.toUpperCase() === "Y") location.reload();

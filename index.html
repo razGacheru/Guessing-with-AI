@@ -3,20 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess the number</title>
+    <title>Codebreaker Clash</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="./script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </head>
   <body>
+    <div class="button-wrapper">
+      <button class="confetti-button" style="visibility: hidden"></button>
+    </div>
+    <h1 id="title">Codebreaker Clash: Man vs Machine!</h1>
     <div class="container">
-      <h1 id="title">Guess the number!</h1>
+      <label for="input-range">Select secret number range</label>
+      <select name="input-range" id="input-range">
+        <option value="20">0-20</option>
+        <option value="50">0-50</option>
+        <option value="100">0-100</option>
+        <option value="200">0-200</option>
+      </select>
+      <input type="button" value="PICK" id="input-range-button" />
+      <h2 id="begin-message"></h2>
       <div class="guess-container">
         <div class="user-guesses">
           <h3>User guesses</h3>
           <input id="user-input" type="number" placeholder=" guess number" />
 
-          <button id="user-btn">Guess!</button>
+          <button id="user-btn">GUESS</button>
           <p class="num-guesses">
             Number of attempts: <span id="user-attempts"></span>
           </p>
@@ -29,7 +41,7 @@
             type="number"
             placeholder=" secret number"
           />
-          <button id="computer-btn">Guess!</button>
+          <button id="computer-btn">GUESS</button>
           <p class="num-guesses">
             Number of attempts: <span id="computer-attempts"></span>
           </p>
@@ -37,10 +49,13 @@
         </div>
       </div>
       <h1 id="result"></h1>
-    </div>
-
-    <div class="button-wrapper">
-      <button class="confetti-button"></button>
+      <div class="hidden" id="hidden">
+        <div class="modal">
+          <h1 id="play-again">Congratulations on finishing the game 🥳</h1>
+          <input type="button" id="play-again-btn" value="PLAY AGAIN" />
+          <span id="close">❌</span>
+        </div>
+      </div>
     </div>
   </body>
 </html>
